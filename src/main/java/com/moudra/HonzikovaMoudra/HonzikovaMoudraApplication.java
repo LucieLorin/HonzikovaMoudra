@@ -8,7 +8,7 @@ public class HonzikovaMoudraApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HonzikovaMoudraApplication.class, args);
-        System.out.println("tak děleeeej magore");
+        System.out.println("tak děleeeej ty magore");
 
     }
 

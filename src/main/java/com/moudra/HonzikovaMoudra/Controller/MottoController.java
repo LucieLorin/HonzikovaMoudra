@@ -28,14 +28,33 @@ public class MottoController {
         return mottoService.getAllMottos();
     }
 
+    // Get random motto
+    @GetMapping("/random")
+    public String getRandomMotto() {
+        return mottoService.getRandomMotto();
+    }
+
     // Get motto by ID
     @GetMapping("/{id}")
     public Optional<Motto> getMottoById(@PathVariable Long id) {
         return mottoService.getMottoById(id);
     }
 
+    // Get polite greetings
     @GetMapping("/")
     public String defaultGreetings() {
         return "Heil SS Division Wallonien";
+    }
+
+    // Delete motto by id
+    @DeleteMapping("/{id}")
+    public String deleteMottoById(@PathVariable Long id) {
+        return mottoService.deleteMottoById(id);
+    }
+
+    // Update motto by id
+    @PutMapping("/{id}")
+    public String updateMottoById(@PathVariable Long id, @RequestBody String updatedMotto) throws JsonProcessingException {
+        return mottoService.updateMottoById(id, updatedMotto);
     }
 }

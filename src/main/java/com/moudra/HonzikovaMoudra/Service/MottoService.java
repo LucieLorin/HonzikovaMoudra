@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.moudra.HonzikovaMoudra.Model.Motto;
 import com.moudra.HonzikovaMoudra.Repository.MottoRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -91,12 +92,13 @@ public class MottoService {
         return "Motto successfully removed.";
     }
 
-    @Transactional
+    @Modifying
     public String updateMottoById(Long id, String updatedMotto) throws JsonProcessingException {
         Optional<Motto> oldMotto = mottoRepository.findById(id);
 
         if (oldMotto.isPresent()) {
             Motto newMotto = objectMapper.readValue(updatedMotto, Motto.class);
+            newMotto.setId(id);
             mottoRepository.save(newMotto);
             return "Motto with ID " + id + " updated successfully.";
         } else {

@@ -1,6 +1,5 @@
 package com.moudra.HonzikovaMoudra.Model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,7 +12,6 @@ public class Motto {
 
 
     @Column(name = "text")
-    @JsonProperty
     private String text;
 
     public Long getId() {
